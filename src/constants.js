@@ -1,0 +1,1 @@
+export const maxNumberOfBillsToRender = 10;
