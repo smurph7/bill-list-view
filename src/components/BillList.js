@@ -1,49 +1,47 @@
 import React from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 import { maxNumberOfBillsToRender } from '../constants';
+import { getBills } from '../../Services';
 
-const bills = [
-  {
-    id: '1',
-    amount: 20,
-    date: '2020-01-20',
-    status: 'paid',
-  },
-  {
-    id: '2',
-    amount: 200,
-    date: '2020-02-02',
-    status: 'paid',
-  },
-];
+export default class BillList extends React.Component {
+  state = { bills: [] };
 
-const renderItem = ({ item }) => (
-  <View style={{ borderWidth: 1 }}>
-    <Text>Bill</Text>
-    <Text>${item.amount}</Text>
-    <Text>{item.date}</Text>
-    <Text>{item.status}</Text>
-  </View>
-);
+  componentDidMount() {
+    this.getBills();
+  }
 
-const renderSeparator = () => <View style={styles.itemSeparator} />;
+  getBills = async () => {
+    const bills = await getBills();
+    this.setState({ bills });
+  };
 
-const BillList = () => {
-  return (
-    <View style={styles.flatList}>
-      <FlatList
-        data={bills}
-        keyExtractor={(item) => item.id}
-        renderItem={renderItem}
-        ItemSeparatorComponent={renderSeparator}
-        initialNumToRender={maxNumberOfBillsToRender}
-        maxToRenderPerBatch={maxNumberOfBillsToRender}
-      />
+  renderItem = ({ item }) => (
+    <View style={{ borderWidth: 1 }}>
+      <Text>Bill</Text>
+      <Text>${item.amount}</Text>
+      <Text>{item.date}</Text>
+      <Text>{item.status}</Text>
     </View>
   );
-};
 
-export default BillList;
+  renderSeparator = () => <View style={styles.itemSeparator} />;
+
+  render() {
+    const { bills } = this.state;
+    return (
+      <View style={styles.flatList}>
+        <FlatList
+          data={bills}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={this.renderItem}
+          ItemSeparatorComponent={this.renderSeparator}
+          initialNumToRender={maxNumberOfBillsToRender}
+          maxToRenderPerBatch={maxNumberOfBillsToRender}
+        />
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   flatList: {
