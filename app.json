@@ -1,0 +1,12 @@
+{
+  "name": "BillList",
+  "displayName": "BillList",
+  "expo": {
+    "name": "BillList",
+    "slug": "BillList",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
