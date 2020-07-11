@@ -3,6 +3,13 @@ import BillPhotoModal from '../src/components/BillPhotoModal';
 import renderer from 'react-test-renderer';
 import { TouchableOpacity } from 'react-native';
 
+jest.mock('@expo/vector-icons', () => {
+  const { View } = require('react-native');
+  return {
+    Ionicons: View,
+  };
+});
+
 describe('BillPhotoModal', () => {
   const props = {
     image: 'url',

@@ -5,8 +5,8 @@ import {
   Image,
   StyleSheet,
   TouchableOpacity,
-  Text
 } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 
 const BillPhotoModal = (props) => {
@@ -19,7 +19,7 @@ const BillPhotoModal = (props) => {
             close();
           }}
         >
-          <Text style={styles.close}>Close</Text>
+          <Ionicons style={styles.close} name="md-close" size={40} />
         </TouchableOpacity>
         <Image style={styles.image} source={{ uri: image }} />
       </SafeAreaView>
@@ -40,7 +40,6 @@ const styles = StyleSheet.create({
   },
   close: {
     alignSelf: 'flex-end',
-    fontSize: 20
   },
 });
 
