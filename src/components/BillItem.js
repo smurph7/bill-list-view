@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import BillPhotoModal from './BillPhotoModal';
+import StatusTooltip from './StatusTooltip';
 import PropTypes from 'prop-types';
 
 export const formatString = (string) => {
@@ -12,7 +13,10 @@ export const formatDate = (date) => {
 };
 
 export default class BillItem extends React.Component {
-  state = { isBillPhotoModalVisible: false, image: '' };
+  state = {
+    isBillPhotoModalVisible: false,
+    image: '',
+  };
 
   openImage = (url) => {
     this.setState({ isBillPhotoModalVisible: true, image: url });
@@ -49,7 +53,10 @@ export default class BillItem extends React.Component {
         <View style={styles.content}>
           <View style={styles.row}>
             <Text style={styles.heading}>Status </Text>
-            <Text>{formattedStatus}</Text>
+            <Text>{formattedStatus} </Text>
+            <View style={styles.tooltip}>
+              <StatusTooltip />
+            </View>
           </View>
         </View>
         <View>
@@ -83,6 +90,9 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontWeight: 'bold',
+  },
+  tooltip: {
+    alignSelf: 'flex-start',
   },
 });
 

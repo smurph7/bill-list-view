@@ -2,6 +2,13 @@ import React from 'react';
 import BillItem, { formatString, formatDate } from '../src/components/BillItem';
 import renderer from 'react-test-renderer';
 
+jest.mock('@expo/vector-icons', () => {
+  const { View } = require('react-native');
+  return {
+    Ionicons: View,
+  };
+});
+
 describe('BillItem', () => {
   const bill = {
     id: '1',

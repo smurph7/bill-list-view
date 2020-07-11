@@ -5,6 +5,13 @@ import { maxNumberOfBillsToRender } from '../src/constants';
 import * as services from '../Services';
 import renderer from 'react-test-renderer';
 
+jest.mock('@expo/vector-icons', () => {
+  const { View } = require('react-native');
+  return {
+    Ionicons: View,
+  };
+});
+
 describe('BillList', () => {
   let tree, flatList, instance;
 
