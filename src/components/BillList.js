@@ -18,6 +18,7 @@ export default class BillList extends React.Component {
   renderItem = ({ item }) => (
     <View style={{ borderWidth: 1 }}>
       <Text>Bill</Text>
+      <Text>{item.id.toString()}</Text>
       <Text>${item.amount}</Text>
       <Text>{item.date}</Text>
       <Text>{item.status}</Text>
@@ -29,16 +30,15 @@ export default class BillList extends React.Component {
   render() {
     const { bills } = this.state;
     return (
-      <View style={styles.flatList}>
-        <FlatList
-          data={bills}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={this.renderItem}
-          ItemSeparatorComponent={this.renderSeparator}
-          initialNumToRender={maxNumberOfBillsToRender}
-          maxToRenderPerBatch={maxNumberOfBillsToRender}
-        />
-      </View>
+      <FlatList
+        data={bills}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={this.renderItem}
+        initialNumToRender={maxNumberOfBillsToRender}
+        maxToRenderPerBatch={maxNumberOfBillsToRender}
+        ItemSeparatorComponent={this.renderSeparator}
+        ListFooterComponent={this.renderSeparator}
+      />
     );
   }
 }
