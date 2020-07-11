@@ -8,10 +8,14 @@
     "test": "jest"
   },
   "dependencies": {
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "expo": "~38.0.1",
     "expo-splash-screen": "~0.3.1",
     "expo-status-bar": "^1.0.0",
     "expo-updates": "~0.2.10",
+    "jest-environment-enzyme": "^7.1.2",
+    "jest-enzyme": "^7.1.2",
     "jest-fetch-mock": "^3.0.3",
     "prop-types": "^15.7.2",
     "react": "~16.11.0",
@@ -21,6 +25,7 @@
     "react-native-reanimated": "~1.9.0",
     "react-native-screens": "~2.9.0",
     "react-native-unimodules": "~0.10.1",
+    "react-native-walkthrough-tooltip": "^1.1.9",
     "react-native-web": "~0.11.7"
   },
   "devDependencies": {
@@ -30,7 +35,14 @@
     "react-test-renderer": "~16.11.0"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "setupFilesAfterEnv": [
+      "jest-enzyme"
+    ],
+    "testEnvironment": "enzyme",
+    "testEnvironmentOptions": {
+      "enzymeAdapter": "react16"
+    }
   },
   "private": true
 }
