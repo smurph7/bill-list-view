@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 import { maxNumberOfBillsToRender } from '../constants';
+import BillItem from './BillItem';
 import { getBills } from '../../Services';
 
 export default class BillList extends React.Component {
@@ -16,13 +17,7 @@ export default class BillList extends React.Component {
   };
 
   renderItem = ({ item }) => (
-    <View style={{ borderWidth: 1 }}>
-      <Text>Bill</Text>
-      <Text>{item.id.toString()}</Text>
-      <Text>${item.amount}</Text>
-      <Text>{item.date}</Text>
-      <Text>{item.status}</Text>
-    </View>
+    <BillItem bill={item} />
   );
 
   renderSeparator = () => <View style={styles.itemSeparator} />;

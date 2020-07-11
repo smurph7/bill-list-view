@@ -1,14 +1,14 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import Header from './src/components/Header';
 import BillList from './src/components/BillList';
 
 const App = () => {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Header />
       <BillList />
-    </View>
+    </SafeAreaView>
   );
 };
 
