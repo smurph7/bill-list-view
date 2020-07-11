@@ -14,6 +14,10 @@ describe('BillList', () => {
     instance = tree.getInstance();
   });
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should render bills', () => {
     expect(flatList).toBeTruthy();
   });
@@ -41,8 +45,32 @@ describe('BillList', () => {
       },
     ];
     jest.spyOn(instance, 'setState');
-    jest.spyOn(services, 'getBills').mockReturnValue(bills);
+    jest.spyOn(services, 'getBills').mockReturnValueOnce(bills);
     await instance.getBills();
     expect(instance.setState).toHaveBeenCalledWith({ bills });
+  });
+
+  it('should order list by newest first', () => {
+    const bills = [
+      {
+        id: '1',
+        date: '2020-01-20',
+      },
+      {
+        id: '2',
+        date: '2020-02-10',
+      },
+    ];
+    const sortedBills = [
+      {
+        id: '2',
+        date: '2020-02-10',
+      },
+      {
+        id: '1',
+        date: '2020-01-20',
+      },
+    ];
+    expect(instance.sortBills(bills)).toEqual(sortedBills);
   });
 });
