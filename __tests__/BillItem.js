@@ -24,4 +24,26 @@ describe('BillItem', () => {
   it('should format date to be dd/mm/yyyy', () => {
     expect(formatDate('2020-06-21')).toEqual('21/06/2020');
   });
+
+  it('should set isBillPhotoModalVisible to true and pass the image url on openImage', () => {
+    const tree = renderer.create(<BillItem bill={bill} />);
+    const instance = tree.getInstance();
+    const image = 'url';
+    jest.spyOn(instance, 'setState');
+    instance.openImage(image);
+    expect(instance.setState).toHaveBeenCalledWith({
+      isBillPhotoModalVisible: true,
+      image,
+    });
+  });
+
+  it('should set isBillPhotoModalVisible to false on closeImage', () => {
+    const tree = renderer.create(<BillItem bill={bill} />);
+    const instance = tree.getInstance();
+    jest.spyOn(instance, 'setState');
+    instance.closeImage();
+    expect(instance.setState).toHaveBeenCalledWith({
+      isBillPhotoModalVisible: false,
+    });
+  });
 });

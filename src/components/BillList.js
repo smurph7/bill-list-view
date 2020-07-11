@@ -20,7 +20,9 @@ export default class BillList extends React.Component {
     return bills.sort((a, b) => new Date(b.date) - new Date(a.date));
   };
 
-  renderItem = ({ item }) => <BillItem bill={item} />;
+  renderItem = ({ item }) => (
+    <BillItem bill={item} />
+  );
 
   renderSeparator = () => <View style={styles.itemSeparator} />;
 
