@@ -76,13 +76,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     flexDirection: 'row',
     height: 90,
+    justifyContent: 'space-around',
   },
   thumbnail: {
     width: 70,
     height: 70,
   },
   content: {
-    paddingHorizontal: 10,
     justifyContent: 'center',
   },
   row: {
