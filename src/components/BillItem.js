@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import BillFullScreenModal from './BillFullScreenModal';
+import TextField from './TextField';
 import StatusTooltip from './StatusTooltip';
 import PropTypes from 'prop-types';
 
@@ -41,19 +42,10 @@ export default class BillItem extends React.Component {
           </TouchableOpacity>
         </View>
         <View style={styles.content}>
+          <TextField heading="Date" text={formattedDate} />
+          <TextField heading="Amount" text={`$${bill.amount}`} />
           <View style={styles.row}>
-            <Text style={styles.heading}>Date </Text>
-            <Text>{formattedDate}</Text>
-          </View>
-          <View style={styles.row}>
-            <Text style={styles.heading}>Amount </Text>
-            <Text>${bill.amount}</Text>
-          </View>
-        </View>
-        <View style={styles.content}>
-          <View style={styles.row}>
-            <Text style={styles.heading}>Status </Text>
-            <Text>{formattedStatus} </Text>
+            <TextField heading="Status" text={formattedStatus} />
             <View style={styles.tooltip}>
               <StatusTooltip status={bill.status} />
             </View>

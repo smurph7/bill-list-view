@@ -1,7 +1,7 @@
 import React from 'react';
 import BillFullScreenModal from '../src/components/BillFullScreenModal';
-import renderer from 'react-test-renderer';
 import { TouchableOpacity } from 'react-native';
+import renderer from 'react-test-renderer';
 
 jest.mock('@expo/vector-icons', () => {
   const { View } = require('react-native');
@@ -16,6 +16,7 @@ describe('BillFullScreenModal', () => {
     isBillFullScreen: false,
     close: jest.fn(),
   };
+  
   it('should pass props correctly', () => {
     const tree = renderer.create(<BillFullScreenModal {...props} />);
     expect(tree.root.props).toEqual(props);
