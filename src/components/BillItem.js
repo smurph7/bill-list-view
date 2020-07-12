@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import BillPhotoModal from './BillPhotoModal';
+import BillFullScreenModal from './BillFullScreenModal';
 import StatusTooltip from './StatusTooltip';
 import PropTypes from 'prop-types';
 
@@ -14,16 +14,16 @@ export const formatDate = (date) => {
 
 export default class BillItem extends React.Component {
   state = {
-    isBillPhotoModalVisible: false,
+    isBillFullScreen: false,
     image: '',
   };
 
   openImage = (url) => {
-    this.setState({ isBillPhotoModalVisible: true, image: url });
+    this.setState({ isBillFullScreen: true, image: url });
   };
 
   closeImage = () => {
-    this.setState({ isBillPhotoModalVisible: false });
+    this.setState({ isBillFullScreen: false, image: '' });
   };
 
   render() {
@@ -55,14 +55,14 @@ export default class BillItem extends React.Component {
             <Text style={styles.heading}>Status </Text>
             <Text>{formattedStatus} </Text>
             <View style={styles.tooltip}>
-              <StatusTooltip />
+              <StatusTooltip status={bill.status} />
             </View>
           </View>
         </View>
         <View>
-          <BillPhotoModal
+          <BillFullScreenModal
             image={this.state.image}
-            isBillPhotoModalVisible={this.state.isBillPhotoModalVisible}
+            isBillFullScreen={this.state.isBillFullScreen}
             close={this.closeImage}
           />
         </View>

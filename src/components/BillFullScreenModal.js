@@ -9,10 +9,10 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 
-const BillPhotoModal = (props) => {
-  const { image, isBillPhotoModalVisible, close } = props;
+const BillFullScreenModal = (props) => {
+  const { image, isBillFullScreen, close } = props;
   return (
-    <Modal animationType="slide" visible={isBillPhotoModalVisible}>
+    <Modal animationType="slide" visible={isBillFullScreen}>
       <SafeAreaView style={styles.imageContainer}>
         <TouchableOpacity
           onPress={() => {
@@ -27,7 +27,7 @@ const BillPhotoModal = (props) => {
   );
 };
 
-export default BillPhotoModal;
+export default BillFullScreenModal;
 
 const styles = StyleSheet.create({
   imageContainer: {
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   },
 });
 
-BillPhotoModal.propTypes = {
+BillFullScreenModal.propTypes = {
   image: PropTypes.string,
-  isBillPhotoModalVisible: PropTypes.bool,
+  isBillFullScreen: PropTypes.bool,
 };
