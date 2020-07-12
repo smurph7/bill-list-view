@@ -22,7 +22,7 @@ export default class BillList extends React.Component {
 
   renderItem = ({ item }) => <BillItem bill={item} />;
 
-  renderSeparator = () => <View style={styles.itemSeparator} />;
+  renderFooter = () => <View style={styles.footer} />;
 
   render() {
     const { bills } = this.state;
@@ -34,15 +34,14 @@ export default class BillList extends React.Component {
         renderItem={this.renderItem}
         initialNumToRender={maxNumberOfBillsToRender}
         maxToRenderPerBatch={maxNumberOfBillsToRender}
-        ItemSeparatorComponent={this.renderSeparator}
-        ListFooterComponent={this.renderSeparator}
+        ListFooterComponent={this.renderFooter}
       />
     );
   }
 }
 
 const styles = StyleSheet.create({
-  itemSeparator: {
-    padding: 1,
+  footer: {
+   borderWidth: 1,
   },
 });

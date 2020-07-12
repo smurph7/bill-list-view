@@ -52,7 +52,7 @@ export default BillItem;
 
 const styles = StyleSheet.create({
   container: {
-    borderWidth: 1,
+    borderTopWidth: 1,
     flexDirection: 'row',
     height: 90,
     justifyContent: 'flex-start',
