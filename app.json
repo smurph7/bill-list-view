@@ -2,11 +2,12 @@
   "name": "BillList",
   "displayName": "BillList",
   "expo": {
-    "name": "BillList",
-    "slug": "BillList",
+    "name": "BillListView",
+    "slug": "billlistview",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "description": ""
   }
 }
